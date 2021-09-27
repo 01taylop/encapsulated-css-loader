@@ -1,7 +1,7 @@
-# scoped-css-loader
+# encapsulated-css-loader
 
 A Webpack loader to scope css with a given class name.
 
-## How to use `scoped-css-loader`
+## How to use `encapsulated-css-loader`
 
-## Why use `scoped-css-loader`?
+## Why use `encapsulated-css-loader`?
