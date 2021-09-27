@@ -2,18 +2,29 @@
   "name": "encapsulated-css-loader",
   "description": "A Webpack loader to scope css with a given class name.",
   "repository": "https://github.com/01taylop/encapsulated-css-loader",
-  "version": "1.0.0-alpha.2",
-  "main": "index.js",
+  "version": "1.0.0-beta.1",
+  "main": "src/loader.js",
   "files": [
-    "index.js",
+    "src/loader.js",
     "README.md"
   ],
-  "scripts": {},
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
   "dependencies": {
     "loader-utils": "2.0.0",
     "schema-utils": "3.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.15.5",
+    "@babel/preset-env": "7.15.6",
+    "babel-jest": "27.2.2",
+    "css-loader": "6.3.0",
+    "jest": "27.2.2",
+    "memfs": "3.3.0",
+    "webpack": "5.54.0"
+  },
   "keywords": [
     "css-loader",
     "encapsulated-css-loader",

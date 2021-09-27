@@ -1,10 +1,12 @@
-import { getOptions } from 'loader-utils'
-import { validate } from 'schema-utils'
+const { getOptions } = require('loader-utils')
+const { validate } = require('schema-utils')
 
 const schema = {
+  additionalProperties: false,
   type: 'object',
   properties: {
     className: {
+      description: 'Define the class name in which you would like to encapsulate your css.',
       type: 'string',
     },
   },
