@@ -1,0 +1,21 @@
+{
+  "name": "scoped-css-loader",
+  "description": "A Webpack loader to scope css with a given class name.",
+  "repository": "https://github.com/01taylop/scoped-css-loader",
+  "version": "1.0.0-alpha.1",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "css-loader",
+    "scoped-css-loader",
+    "Webpack"
+  ],
+  "author": "Patrick Taylor",
+  "license": "MIT"
+}
