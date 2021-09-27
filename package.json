@@ -2,14 +2,17 @@
   "name": "encapsulated-css-loader",
   "description": "A Webpack loader to scope css with a given class name.",
   "repository": "https://github.com/01taylop/encapsulated-css-loader",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "main": "index.js",
   "files": [
     "index.js",
     "README.md"
   ],
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "loader-utils": "2.0.0",
+    "schema-utils": "3.1.1"
+  },
   "devDependencies": {},
   "keywords": [
     "css-loader",
