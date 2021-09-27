@@ -2,7 +2,7 @@
   "name": "encapsulated-css-loader",
   "description": "A Webpack loader to scope css with a given class name.",
   "repository": "https://github.com/01taylop/encapsulated-css-loader",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "main": "src/loader.js",
   "files": [
     "src/loader.js",
