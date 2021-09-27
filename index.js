@@ -1,6 +1,22 @@
-module.exports = function (source) {
-  console.log('HELLO')
-  console.log(source)
+import { getOptions } from 'loader-utils'
+import { validate } from 'schema-utils'
 
-  return `.test { ${source} }`
+const schema = {
+  type: 'object',
+  properties: {
+    className: {
+      type: 'string',
+    },
+  },
+}
+
+module.exports = function (source) {
+  const options = getOptions(this)
+
+  validate(schema, options, {
+    name: 'Encapsulated CSS Loader',
+    baseDataPath: 'options',
+  })
+
+  return `.${options.className} { ${source} }`
 }
