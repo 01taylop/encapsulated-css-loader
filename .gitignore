@@ -1,7 +1,11 @@
+# build
+lib/
+
 # dependencies
 node_modules
 
 # tests
+coverage/
 
 # logs
 npm-debug.log*

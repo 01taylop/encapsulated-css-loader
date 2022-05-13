@@ -1,6 +1,8 @@
-# encapsulated-css-loader
+# Encapsulated CSS Loader
 
 A Webpack loader to encapsulate CSS with a given class name.
+
+---
 
 ## What does the `encapsulated-css-loader` do?
 
