@@ -1,36 +1,54 @@
 {
   "name": "encapsulated-css-loader",
-  "description": "A Webpack loader to scope css with a given class name.",
-  "repository": "https://github.com/01taylop/encapsulated-css-loader",
+  "description": "A Webpack loader to encapsulate CSS with a given class name.",
   "version": "1.0.0",
-  "main": "src/loader.js",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs"
+    }
+  },
   "files": [
-    "src/loader.js",
+    "lib",
     "README.md"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "build": "rimraf lib && babel src -d lib --out-file-extension .cjs && cp src/index.mjs lib/",
+    "publishLib": "yarn test --coverage && yarn build && npm publish",
+    "test": "jest"
   },
   "dependencies": {
     "loader-utils": "2.0.0",
     "schema-utils": "3.1.1"
   },
   "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.6",
-    "babel-jest": "27.2.2",
-    "css-loader": "6.3.0",
-    "jest": "27.2.2",
-    "memfs": "3.3.0",
-    "webpack": "5.54.0"
+    "@babel/cli": "7.17.10",
+    "@babel/core": "7.17.10",
+    "@babel/plugin-proposal-optional-chaining": "7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "7.17.9",
+    "@babel/preset-env": "7.17.10",
+    "babel-jest": "28.1.0",
+    "css-loader": "6.7.1",
+    "jest": "28.1.0",
+    "memfs": "3.4.1",
+    "rimraf": "3.0.2",
+    "webpack": "5.72.0"
+  },
+  "author": "Patrick Taylor <hello@patricktaylor.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/01taylop/encapsulated-css-loader"
   },
   "keywords": [
     "css-loader",
     "encapsulated-css-loader",
     "scoped-css-loader",
-    "Webpack"
+    "webpack"
   ],
-  "author": "Patrick Taylor",
-  "license": "MIT"
+  "license": "ISC"
 }
