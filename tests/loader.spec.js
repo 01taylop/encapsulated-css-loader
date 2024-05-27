@@ -1,4 +1,4 @@
-import compiler from './compiler.js'
+import compiler from './compiler'
 
 describe('loader', () => {
 
