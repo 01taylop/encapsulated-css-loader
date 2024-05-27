@@ -5,6 +5,13 @@
 
 A Webpack loader to encapsulate CSS with a given class name.
 
+- [Motivation](#motivation)
+- [What does the `encapsulated-css-loader` do?](#what-does-the-encapsulated-css-loader-do)
+- [Why use `encapsulated-css-loader`?](#why-use-encapsulated-css-loader)
+- [How to use `encapsulated-css-loader`](#how-to-use-encapsulated-css-loader)
+
+## Motivation
+
 ## What does the `encapsulated-css-loader` do?
 
 The `encapsulated-css-loader` takes uncompiled CSS (or SCSS) and encapsulates it with a given class name.

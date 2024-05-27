@@ -1,2 +1,6 @@
-ignores: []
+ignores: [
+  "babel-jest",
+  "css-loader",
+  "rimraf"
+]
 skip-missing: true
