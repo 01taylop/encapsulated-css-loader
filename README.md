@@ -1,4 +1,7 @@
-# encapsulated-css-loader
+# Encapsulated CSS Loader
+
+[![CodeQL Analysis](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml)
+[![Test](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml)
 
 A Webpack loader to encapsulate CSS with a given class name.
 
@@ -77,7 +80,3 @@ The next loaders are fairly basic and you can configure those to meet your requi
   }
 }
 ```
-
-## Contributing
-
-If you would like to use this loader but it does not cover your use-case, please raise an issue or feel free to open a PR yourself.
