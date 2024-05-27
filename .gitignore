@@ -1,7 +1,11 @@
+# build
+lib/
+
 # dependencies
 node_modules
 
 # tests
+coverage/
 
 # logs
 npm-debug.log*
@@ -13,4 +17,4 @@ yarn-error.log*
 .idea
 .iml
 .log
-package-lock.json
+.vscode
