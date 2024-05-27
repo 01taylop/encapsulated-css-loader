@@ -1,2 +1,5 @@
-ignores: []
+ignores: [
+  "babel-jest",
+  "css-loader"
+]
 skip-missing: true

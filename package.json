@@ -32,6 +32,6 @@
     "css-loader",
     "encapsulated-css-loader",
     "scoped-css-loader",
-    "Webpack"
+    "webpack"
   ]
 }
