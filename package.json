@@ -7,11 +7,14 @@
   },
   "version": "2.0.0",
   "main": "src/loader.js",
+  "engines": {
+    "node": ">=12.13.0"
+  },
   "files": [
     "src/loader.js"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "schema-utils": "4.2.0"
@@ -19,7 +22,7 @@
   "devDependencies": {
     "@babel/core": "7.24.6",
     "@babel/preset-env": "7.24.6",
-    "css-loader": "7.1.2",
+    "css-loader": "6.11.0",
     "jest": "29.7.0",
     "memfs": "4.9.2",
     "webpack": "5.91.0"

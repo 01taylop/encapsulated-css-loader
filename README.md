@@ -5,10 +5,15 @@
 
 A Webpack loader to encapsulate CSS with a given class name.
 
+- [Prerequisites](#prerequisites)
 - [Motivation](#motivation)
 - [What does the `encapsulated-css-loader` do?](#what-does-the-encapsulated-css-loader-do)
 - [Why use `encapsulated-css-loader`?](#why-use-encapsulated-css-loader)
 - [How to use `encapsulated-css-loader`](#how-to-use-encapsulated-css-loader)
+
+## Prerequisites
+
+![Node Versions Supported](https://img.shields.io/static/v1?label=node&message=>=12.13.0&color=blue)
 
 ## Motivation
 
