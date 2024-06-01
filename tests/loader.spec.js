@@ -41,7 +41,6 @@ describe('loader', () => {
 
     it('encapsulates a css file', async () => {
       const stats = await compiler('example.css', { className: 'test' })
-      console.log(stats)
       const output = stats.toJson({ source: true }).modules[0].source
 
       expect(output).toContain(`___CSS_LOADER_EXPORT___.push([module.id, ".test { ${exampleCSS} }", ""]);`)
