@@ -1,6 +1,4 @@
 ignores: [
-  "babel-jest",
-  "css-loader",
-  "rimraf"
+  "css-loader"
 ]
 skip-missing: true
