@@ -3,13 +3,14 @@
 [![CodeQL Analysis](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml)
 [![Test](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml)
 
-A Webpack loader to encapsulate CSS with a given class name.
+A Webpack loader to encapsulate CSS with a given class name to prevent styles from leaking between modules. Ideal for micro-frontend architectures where multiple teams contribute to the same UI.
 
 - [Prerequisites](#prerequisites)
 - [Motivation](#motivation)
-- [What does the `encapsulated-css-loader` do?](#what-does-the-encapsulated-css-loader-do)
-- [Why use `encapsulated-css-loader`?](#why-use-encapsulated-css-loader)
-- [How to use `encapsulated-css-loader`](#how-to-use-encapsulated-css-loader)
+- [Example](#example)
+- [Usage](#usage)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
 
 ## Prerequisites
 
@@ -17,13 +18,17 @@ A Webpack loader to encapsulate CSS with a given class name.
 
 ## Motivation
 
-## What does the `encapsulated-css-loader` do?
+In micro-frontend architectures, different teams develop and deploy modules that render on the same page. This can cause CSS rules to unintentionally impact other modules. `encapsulated-css-loader` solves this by encapsulating CSS within a unique class name, ensuring style isolation.
 
-The `encapsulated-css-loader` takes uncompiled CSS (or SCSS) and encapsulates it with a given class name.
+This loader is ideal for a decentralised build process, using something unique to the module (e.g., repository name) as the encapsulation class name. When rendering the module, apply the same unique class name to ensure that CSS rules are scoped correctly.
 
-**example.scss**
+While there are other solutions, such as [CSS Modules](https://css-tricks.com/css-modules-part-1-need/), there is no guarantee how teams will build and develop their modules. Therefore encapsulating CSS at the highest leverl - in the Webpack configuration - was considered the fastest, safest, and more robust solution.
 
-```.scss
+## Example
+
+**example.scss:**
+
+```scss
 h1 {
   color: red;
 }
@@ -37,9 +42,9 @@ h1 {
 }
 ```
 
-**example.scss after encapsulation, passing "test" as the class name**
+**example.scss after encapsulation, using "test" as the class name:**
 
-```.css
+```css
 .test h1 {
   color: red;
 }
@@ -53,23 +58,29 @@ h1 {
 }
 ```
 
-_The loader does not work for SASS files._
+> Please note: The loader does not work for SASS files.
 
-## Why use `encapsulated-css-loader`?
+## Usage
 
-This Webpack loader was created as a temporary solution for a very specific use-case.
+### Installation
 
-The project in question utilises Webpack 5's Module Federation as part of a Micro-Frontend architecture. The Webpack configuration is abstracted out into a `devDependency` which many teams use to build and deploy components to the "shell". Many components can be rendered on a single page and there is no guarantee that one component's CSS has been encapsulated. Whilst [CSS Modules](https://css-tricks.com/css-modules-part-1-need/) would add value, if a component changes the style of an element, e.g. the `h1` tag in the example above, this change would be global, overwriting the style of other components or even the "shell" itself.
+First, install the package as a dev dependency along with `sass-loader`:
 
-When factoring in the number of teams, number of components, and the uncertainty of third-party libraries, encapsulating the css at the highest level - in the Webpack configuration - was considered the fastest and safest solution.
+```bash
+# Using yarn
+yarn add -D encapsulated-css-loader sass-loader
 
-## How to use `encapsulated-css-loader`
+# Using npm
+npm install -D encapsulated-css-loader sass-loader
+```
 
-Webpack loaders run in reverse order; from bottom to top. In the example below, the `encapsulated-css-loader` runs first, passing in the `className` of "test". This will encapsulate any CSS or SCSS file with the "test" class, as shown in the example above.
+### Configuration
 
-The loader does the most basic implementation possible and simply wraps the source of the file in the class name provided - in SCSS. **Therefore, the next loader must be the `sass-loader` - even if you are not using SCSS in your project.**
+1. Webpack loaders run in reverse order - from bottom to top - so `encapsulated-css-loader` should be the first loader to run. Pass in the desired `className` to encapsulate the CSS.
 
-The next loaders are fairly basic and you can configure those to meet your requirements.
+2. The next loader must be `sass-loader` - even if you are not using SCSS in your project.
+
+3. Configure any other CSS loaders - such as `postcss`, `css-loader`, and `style-loader` - as required.
 
 ```webpack.config.js
 {
@@ -80,7 +91,7 @@ The next loaders are fairly basic and you can configure those to meet your requi
       {
         test: /\.(sc|c)ss$/,
         use: [
-          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          'style-loader',
           { loader: 'css-loader', options: { sourceMap: true } },
           { loader: 'postcss-loader', options: { postcssOptions: { plugins: ['postcss-preset-env'] } } },
           { loader: 'sass-loader', options: { sourceMap: true } },
