@@ -22,7 +22,7 @@ In micro-frontend architectures, different teams develop and deploy modules that
 
 This loader is ideal for a decentralised build process, using something unique to the module (e.g., repository name) as the encapsulation class name. When rendering the module, apply the same unique class name to ensure that CSS rules are scoped correctly.
 
-While there are other solutions, such as [CSS Modules](https://css-tricks.com/css-modules-part-1-need/), there is no guarantee how teams will build and develop their modules. Therefore encapsulating CSS at the highest leverl - in the Webpack configuration - was considered the fastest, safest, and more robust solution.
+While there are other solutions, such as [CSS Modules](https://css-tricks.com/css-modules-part-1-need/), there is no guarantee how teams will build and develop their modules. Therefore encapsulating CSS at the highest level - in the Webpack configuration - was considered the fastest, safest, and more robust solution.
 
 ## Example
 
