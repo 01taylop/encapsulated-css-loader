@@ -8,7 +8,7 @@
   "version": "2.0.0",
   "main": "src/loader.js",
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=18.18.0"
   },
   "files": [
     "src/loader.js"
