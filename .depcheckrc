@@ -1,4 +1,0 @@
-ignores: [
-  "css-loader"
-]
-skip-missing: true
