@@ -33,5 +33,5 @@ jobs:
     - name: Run tests
       run: yarn test --coverage
 
-    - name: Depcheck
-      run: npx depcheck
+    - name: Code quality check
+      run: npx knip
