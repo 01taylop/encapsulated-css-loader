@@ -1,7 +1,7 @@
 module.exports = {
   clearMocks: true,
   collectCoverageFrom: [
-    'src/**/*.js',
+    'src/**/*',
   ],
   coverageDirectory: 'coverage',
   coverageThreshold: {
@@ -12,5 +12,4 @@ module.exports = {
       statements: 100,
     },
   },
-  testMatch: ['**/*.spec.js'],
 }
