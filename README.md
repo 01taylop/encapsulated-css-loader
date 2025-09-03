@@ -1,20 +1,17 @@
-# Encapsulated CSS Loader
+# 🎨 Encapsulated CSS Loader
 
 [![CodeQL Analysis](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml)
 [![Test](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml)
 
+![Node Versions Supported](https://img.shields.io/static/v1?label=node&message=>=18.18.0&color=blue)
+
 A Webpack loader to encapsulate CSS with a given class name to prevent styles from leaking between modules. Ideal for micro-frontend architectures where multiple teams contribute to the same UI.
 
-- [Prerequisites](#prerequisites)
 - [Motivation](#motivation)
 - [Example](#example)
 - [Usage](#usage)
   - [Installation](#installation)
   - [Configuration](#configuration)
-
-## Prerequisites
-
-![Node Versions Supported](https://img.shields.io/static/v1?label=node&message=>=12.13.0&color=blue)
 
 ## Motivation
 
