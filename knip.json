@@ -1,4 +1,6 @@
 {
   "ignoreBinaries": ["knip"],
-  "ignoreDependencies": ["css-loader"]
+  "ignoreDependencies": [
+    "css-loader"
+  ]
 }
