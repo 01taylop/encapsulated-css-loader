@@ -15,11 +15,9 @@ A Webpack loader to encapsulate CSS with a given class name to prevent styles fr
 
 ## Motivation
 
-In micro-frontend architectures, different teams develop and deploy modules that render on the same page. This can cause CSS rules to unintentionally impact other modules. `encapsulated-css-loader` solves this by encapsulating CSS within a unique class name, ensuring style isolation.
+When multiple teams or modules contribute styles to the same application, CSS rules can unintentionally conflict with each other. The global nature of CSS means that styles from one module can leak into others, causing visual bugs that are difficult to trace and fix.
 
-This loader is ideal for a decentralised build process, using something unique to the module (e.g., repository name) as the encapsulation class name. When rendering the module, apply the same unique class name to ensure that CSS rules are scoped correctly.
-
-While there are other solutions, such as [CSS Modules](https://css-tricks.com/css-modules-part-1-need/), there is no guarantee how teams will build and develop their modules. Therefore encapsulating CSS at the highest level - in the Webpack configuration - was considered the fastest, safest, and more robust solution.
+Encapsulated CSS Loader solves this by automatically wrapping all CSS rules with a unique class name, ensuring complete style isolation between modules. This approach works regardless of how teams structure their code or build processes, providing a robust solution for preventing CSS conflicts at the Webpack level.
 
 ## Example
 
