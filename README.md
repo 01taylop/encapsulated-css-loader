@@ -1,6 +1,5 @@
 # 🎨 Encapsulated CSS Loader
 
-[![CodeQL Analysis](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/codeql-analysis.yml)
 [![Test](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml/badge.svg)](https://github.com/01taylop/encapsulated-css-loader/actions/workflows/test.yml)
 
 ![Node Versions Supported](https://img.shields.io/static/v1?label=node&message=>=18.18.0&color=blue)
