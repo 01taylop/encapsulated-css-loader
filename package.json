@@ -14,6 +14,7 @@
     "src/loader.js"
   ],
   "scripts": {
+    "release": "changeset publish",
     "test": "jest --runInBand"
   },
   "dependencies": {
