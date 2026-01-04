@@ -14,10 +14,21 @@ const config: Config = {
       statements: 100,
     },
   },
+  extensionsToTreatAsEsm: ['.ts'],
   testEnvironment: 'node',
   transform: {
+    'tests/.*\\.ts$': ['ts-jest', {
+      tsconfig: {
+        rootDir: '.',
+      },
+      useESM: true,
+    }],
     '^.+\\.ts$': 'ts-jest',
   },
+  transformIgnorePatterns: [
+    '/node_modules/',
+    '/lib/',
+  ],
 }
 
 export default config
