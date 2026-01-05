@@ -25,7 +25,6 @@ export default (loaderPath: string, fixture: string, options = {}): Promise<Stat
     },
     output: {
       path: tmpdir(),
-      filename: 'bundle.js',
     },
   })
 
