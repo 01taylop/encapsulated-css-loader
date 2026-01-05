@@ -1,7 +1,7 @@
 {
   "name": "encapsulated-css-loader",
   "description": "A Webpack loader to encapsulate CSS with a given class name to prevent styles from leaking between modules.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/01taylop/encapsulated-css-loader.git"
