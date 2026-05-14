@@ -34,6 +34,14 @@ describe('encapsulated-css-loader', () => {
     }).toThrow()
   })
 
+  it('throws an error when selector is missing with scope strategy', () => {
+    mockContext.getOptions.mockReturnValue({ strategy: 'scope' })
+
+    expect(() => {
+      loader.call(mockContext, 'h1 { color: red; }')
+    }).toThrow()
+  })
+
   it('encapsulates CSS with the specified class name', () => {
     mockContext.getOptions.mockReturnValue({ className: 'test' })
 
@@ -53,7 +61,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('encapsulates CSS with the scope strategy', () => {
-    mockContext.getOptions.mockReturnValue({ className: 'test', strategy: 'scope' })
+    mockContext.getOptions.mockReturnValue({ selector: '.test', strategy: 'scope' })
 
     const source = 'h1 { color: red; }'
     const result = loader.call(mockContext, source)
@@ -70,7 +78,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('handles empty CSS with the scope strategy', () => {
-    mockContext.getOptions.mockReturnValue({ className: 'test', strategy: 'scope' })
+    mockContext.getOptions.mockReturnValue({ selector: '.test', strategy: 'scope' })
 
     const result = loader.call(mockContext, '')
 
@@ -132,7 +140,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('extracts @use directives to top level with scope strategy', () => {
-    mockContext.getOptions.mockReturnValue({ className: 'test', strategy: 'scope' })
+    mockContext.getOptions.mockReturnValue({ selector: '.test', strategy: 'scope' })
 
     const source = "@use 'sass:math';\nh1 { color: red; }"
     const result = loader.call(mockContext, source)

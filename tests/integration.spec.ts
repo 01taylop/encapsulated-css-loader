@@ -31,7 +31,7 @@ describe.each([
     expect.assertions(1)
 
     try {
-      await compiler(loaderPath, 'example.css', { className: 'test', strategy: 'invalid' })
+      await compiler(loaderPath, 'example.css', { strategy: 'invalid' })
     } catch (error) {
       expect((error as any[])[0].message).toContain('Error')
     }
@@ -58,7 +58,7 @@ describe.each([
   it('encapsulates a css file with the scope strategy', async () => {
     expect.assertions(1)
 
-    const stats = await compiler(loaderPath, 'example.css', { className: 'test', strategy: 'scope' })
+    const stats = await compiler(loaderPath, 'example.css', { selector: '.test', strategy: 'scope' })
     const output = stats.toJson({ source: true }).modules?.[0]?.source
 
     expect(output).toContain(`___CSS_LOADER_EXPORT___.push([module.id, \`@scope (.test) { ${EXAMPLE_CSS} }\`, ""]);`)

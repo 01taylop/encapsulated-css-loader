@@ -5,29 +5,39 @@ import type { LoaderContext } from 'webpack'
 
 const schema: Schema = {
   additionalProperties: false,
+  if: {
+    properties: { strategy: { const: 'scope' } },
+    required: ['strategy'],
+  },
+  then: { required: ['selector'] },
+  else: { required: ['className'] },
   properties: {
     className: {
       description: 'Define the class name in which you would like to encapsulate your CSS.',
       type: 'string',
     },
+    selector: {
+      description: 'Define the CSS selector to use as the @scope root.',
+      type: 'string',
+    },
     strategy: {
-      description: "Define the scoping strategy: 'class' (default) wraps CSS in a class selector, 'scope' uses the native CSS @scope rule.",
+      description: 'Define the scoping strategy: "class" (default) wraps CSS in a class selector, "scope" uses the native CSS @scope rule.',
       enum: ['class', 'scope'],
       type: 'string',
     },
   },
-  required: ['className'],
   type: 'object',
 }
 
 interface LoaderOptions {
-  className: string
+  className?: string
+  selector?: string
   strategy?: 'class' | 'scope'
 }
 
 const AT_RULE_PATTERN = /^[ \t]*@(?:use|forward|import|charset)[^;]*;[ \t]*\n?/gm
 
-function extractTopLevelAtRules(source: string): { atRules: string; remainder: string } {
+const extractTopLevelAtRules = (source: string): { atRules: string; remainder: string } => {
   const atRules: string[] = []
   const remainder = source.replace(AT_RULE_PATTERN, (match) => {
     atRules.push(match.trimEnd())
@@ -52,8 +62,8 @@ function loader(this: LoaderContext<LoaderOptions>, source: string): string {
 
   const wrapper =
     strategy === 'scope'
-      ? `@scope (.${options.className}) { ${remainder} }`
-      : `.${options.className} { ${remainder} }`
+      ? `@scope (${options.selector!}) { ${remainder} }`
+      : `.${options.className!} { ${remainder} }`
 
   return atRules ? `${atRules}\n\n${wrapper}` : wrapper
 }
