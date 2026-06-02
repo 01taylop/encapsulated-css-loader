@@ -1,5 +1,4 @@
 {
-  "ignoreBinaries": [],
   "ignoreDependencies": [
     "css-loader",
     "ts-node"
