@@ -36,13 +36,13 @@ const compiler = (loaderPath: string, fixture: string, options = {}): Promise<St
 
   return new Promise((resolve, reject) => {
     webpackCompiler.run((error, stats) => {
-      if (error) {
-        reject(error)
+      if (error || !stats) {
+        return reject(error)
       }
-      if (stats?.hasErrors()) {
-        reject(stats.toJson().errors)
+      if (stats.hasErrors()) {
+        return reject(stats.toJson().errors)
       }
-      resolve(stats!)
+      resolve(stats)
     })
   })
 }
