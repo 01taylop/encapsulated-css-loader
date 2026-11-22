@@ -1,17 +1,12 @@
 import loader from '..'
 
-describe('encapsulated-css-loader', () => {
+describe('loader', () => {
 
-  let mockContext: any
-
-  beforeEach(() => {
-    mockContext = {
-      getOptions: jest.fn(),
-    }
-  })
+  const getOptions = jest.fn()
+  const mockContext = { getOptions } as unknown as ThisParameterType<typeof loader>
 
   it('throws error when className is missing', () => {
-    mockContext.getOptions.mockReturnValue({})
+    getOptions.mockReturnValue({})
 
     expect(() => {
       loader.call(mockContext, 'h1 { color: red; }')
@@ -19,7 +14,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('throws an error when className is not a string', () => {
-    mockContext.getOptions.mockReturnValue({ className: 123 })
+    getOptions.mockReturnValue({ className: 123 })
 
     expect(() => {
       loader.call(mockContext, 'h1 { color: red; }')
@@ -27,7 +22,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('encapsulates CSS with the specified class name', () => {
-    mockContext.getOptions.mockReturnValue({ className: 'test' })
+    getOptions.mockReturnValue({ className: 'test' })
 
     const source = 'h1 { color: red; }'
     const result = loader.call(mockContext, source)
@@ -36,7 +31,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('handles empty CSS', () => {
-    mockContext.getOptions.mockReturnValue({ className: 'test' })
+    getOptions.mockReturnValue({ className: 'test' })
 
     const result = loader.call(mockContext, '')
 
@@ -44,7 +39,7 @@ describe('encapsulated-css-loader', () => {
   })
 
   it('preserves CSS formatting', () => {
-    mockContext.getOptions.mockReturnValue({ className: 'wrapper' })
+    getOptions.mockReturnValue({ className: 'wrapper' })
 
     const source = 'h1 {\n  color: blue;\n  font-size: 16px;\n}'
     const result = loader.call(mockContext, source)
