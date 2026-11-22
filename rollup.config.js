@@ -5,6 +5,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import { defineConfig } from 'rollup'
+import { dts } from 'rollup-plugin-dts'
 
 const { dependencies, peerDependencies } = JSON.parse(readFileSync(resolve('./package.json'), 'utf-8'))
 
@@ -45,11 +46,23 @@ export default defineConfig([{
   },
   plugins: [
     nodeResolve(),
-    typescript({
-      ...commonTypeScriptOptions,
-      declaration: true,
-      declarationDir: 'lib',
-    }),
+    typescript(commonTypeScriptOptions),
     terser(),
+  ],
+}, {
+  input: 'src/index.ts',
+  output: [{
+    file: 'lib/index.d.ts',
+    format: 'esm',
+  }, {
+    file: 'lib/index.d.cts',
+    format: 'cjs',
+    plugins: [{
+      name: 'cjs-export-equals',
+      renderChunk: code => code.replace('export { loader as default };', 'export = loader;'),
+    }],
+  }],
+  plugins: [
+    dts(),
   ],
 }])

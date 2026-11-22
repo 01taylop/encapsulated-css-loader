@@ -4,7 +4,6 @@ import { compiler } from './compiler'
 
 import type { StatsError } from 'webpack'
 
-// @ts-ignore - CJS build doesn't have type definitions
 const { default: loaderCJS } = await import('../lib/index.cjs')
 
 describe.each([
