@@ -1,8 +1,9 @@
 import loaderESM from '../lib/index.js'
 
-import compiler from './compiler'
+import { compiler } from './compiler'
 
-// @ts-ignore - CJS build doesn't have type definitions
+import type { StatsError } from 'webpack'
+
 const { default: loaderCJS } = await import('../lib/index.cjs')
 
 describe.each([
@@ -12,22 +13,22 @@ describe.each([
 
   const EXAMPLE_CSS = 'h1 {\n  color: #FF69B4;\n}\n'
 
-  it('can import the loader', () => {
+  test('importing the loader', () => {
     expect(loader).toBeDefined()
     expect(typeof loader).toBe('function')
   })
 
-  it('throws an error if className is not provided', async () => {
+  test('throwing an error when className is not provided', async () => {
     expect.assertions(1)
 
     try {
       await compiler(loaderPath, 'example.css', {})
     } catch (error) {
-      expect((error as any[])[0].message).toContain('Error')
+      expect((error as StatsError[])[0].message).toContain('Error')
     }
   })
 
-  it('encapsulates a css file', async () => {
+  test('encapsulating a css file', async () => {
     expect.assertions(1)
 
     const stats = await compiler(loaderPath, 'example.css', { className: 'test' })
@@ -36,7 +37,7 @@ describe.each([
     expect(output).toContain(`___CSS_LOADER_EXPORT___.push([module.id, \`.test { ${EXAMPLE_CSS} }\`, ""]);`)
   })
 
-  it('encapsulates an scss file', async () => {
+  test('encapsulating an scss file', async () => {
     expect.assertions(1)
 
     const stats = await compiler(loaderPath, 'example.scss', { className: 'test' })
